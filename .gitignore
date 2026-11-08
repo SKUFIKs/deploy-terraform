@@ -4,9 +4,7 @@
 *.tfstate.*
 *.tfstate.backup
 
-*.tfvars
 *.tfvars.json
-*.auto.tfvars
 *.auto.tfvars.json
 
 !*.example.tfvars

@@ -1,4 +1,9 @@
 terraform {
+  
+  backend "local" {
+    path = "/home/skuf/terraform-state/terraform.tfstate"
+  }
+  
   required_providers {
     proxmox = {
       source  = "bpg/proxmox"
@@ -257,5 +262,7 @@ resource "proxmox_virtual_environment_vm" "dev_server" {
 
 
 output "dev__ipv4_address" {
-  value = try(proxmox_virtual_environment_vm.dev_server.ipv4_addresses[1][0], "IP не получен")
+  value = try(proxmox_virtual_environment_vm.dev_server.ipv4_addresses[1][0])
 }
+
+
