@@ -1,9 +1,9 @@
 terraform {
-  
+
   backend "local" {
     path = "/home/skuf/terraform-state/terraform.tfstate"
   }
-  
+
   required_providers {
     proxmox = {
       source  = "bpg/proxmox"
