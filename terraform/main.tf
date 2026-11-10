@@ -1,5 +1,8 @@
 terraform {
 
+  # 1.7+ нужен для terraform test с mock_provider (см. tests/).
+  required_version = ">= 1.7.0"
+
   backend "local" {
     path = "/home/skuf/terraform-state/terraform.tfstate"
   }
@@ -264,5 +267,3 @@ resource "proxmox_virtual_environment_vm" "dev_server" {
 output "dev__ipv4_address" {
   value = try(proxmox_virtual_environment_vm.dev_server.ipv4_addresses[1][0])
 }
-
-

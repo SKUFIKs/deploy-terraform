@@ -37,7 +37,6 @@ vm_id_1_name         = "app-node-01"
 tags_vm1             = ["terraform", "web"]
 vm_id_1_cpu          = 2
 vm_id_1_memory       = 2048
-vm_id_1_floating     = 0
 vm_id_1_datastore_id = "local-lvm"
 vm_id_1_disksize     = 20
 vm_id_1_address      = "192.168.1.101/24"
