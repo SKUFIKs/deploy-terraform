@@ -16,7 +16,6 @@ vm_id_1_name         = "nginx-node"
 tags_vm1             = ["Web", "Proxy"]
 vm_id_1_cpu          = 1
 vm_id_1_memory       = 1024
-vm_id_1_floating     = 512
 vm_id_1_datastore_id = "local-lvm"
 vm_id_1_disksize     = 5
 vm_id_1_address      = "192.168.10.210/24"
@@ -45,5 +44,3 @@ vm_id_3_datastore_id = "local-lvm"
 vm_id_3_disksize     = 15
 vm_id_3_address      = "192.168.10.100/24"
 vm_id_3_gateway      = "192.168.10.1"
-
-

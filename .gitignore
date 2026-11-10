@@ -1,8 +1,15 @@
 **/.terraform/*
+.terraform.tfstate.lock.info
 
 *.tfstate
 *.tfstate.*
 *.tfstate.backup
+terraform.tfstate.d/
+
+# Планы и кэш TFLint
+*.tfplan
+tfplan
+.tflint.d/
 
 *.tfvars.json
 *.auto.tfvars.json

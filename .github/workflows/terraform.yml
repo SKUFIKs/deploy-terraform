@@ -7,7 +7,7 @@ on:
     pull_request:
 
 jobs:
-    terraform: 
+    terraform:
         name: "Terraform"
         runs-on: [self-hosted,terraform-runner]
 
@@ -23,13 +23,26 @@ jobs:
               uses: hashicorp/setup-terraform@v3
 
             - name: Terraform Format
-              run: terraform fmt -check
+              run: terraform fmt -check -recursive -diff
 
             - name: Terraform Init
               run: terraform init
 
             - name: Terraform Validate
               run: terraform validate
+
+            - name: Setup TFLint
+              uses: terraform-linters/setup-tflint@v4
+              with:
+                tflint_version: v0.66.0
+
+            - name: TFLint
+              run: |
+                tflint --init
+                tflint
+
+            - name: Terraform Test
+              run: terraform test
 
             - name: Terraform Plan
               run: terraform plan -out=tfplan

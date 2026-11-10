@@ -115,10 +115,6 @@ variable "vm_id_1_memory" {
   type = number
 }
 
-variable "vm_id_1_floating" {
-  type = number
-}
-
 variable "vm_id_1_datastore_id" {
   type = string
 }
