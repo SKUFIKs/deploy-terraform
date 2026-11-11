@@ -7,9 +7,23 @@
 $ErrorActionPreference = 'Stop'
 $tfDir = Join-Path $PSScriptRoot 'terraform'
 
+# Prefer tools installed locally by tools/install-tools.ps1.
+$toolsDir = Join-Path $PSScriptRoot '.tools'
+if (Test-Path (Join-Path $toolsDir 'terraform.exe')) {
+    $env:PATH = "$toolsDir;$env:PATH"
+}
+
+# Use the local provider mirror only if the user has no CLI config of their own.
+if (-not $env:TF_CLI_CONFIG_FILE) {
+    $localRc = Join-Path $PSScriptRoot '.terraformrc'
+    if (Test-Path $localRc) {
+        $env:TF_CLI_CONFIG_FILE = $localRc
+    }
+}
+
 function Assert-Command([string]$name) {
     if (-not (Get-Command $name -ErrorAction SilentlyContinue)) {
-        throw "Command not found: $name. Install it and run again."
+        throw "Command not found: $name. Run .\tools\install-tools.ps1 or install it manually."
     }
 }
 
@@ -39,7 +53,7 @@ try {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
     Write-Host '==> terraform init -backend=false'
-    terraform init -backend=false -input=false
+    terraform init -backend=false -input=false -lockfile=readonly
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
     Write-Host '==> terraform validate'

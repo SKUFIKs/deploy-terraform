@@ -267,3 +267,132 @@ resource "proxmox_virtual_environment_vm" "dev_server" {
 output "dev__ipv4_address" {
   value = try(proxmox_virtual_environment_vm.dev_server.ipv4_addresses[1][0])
 }
+
+resource "proxmox_virtual_environment_vm" "ru_server" {
+
+  vm_id = var.vm_id_4
+
+  name      = var.vm_id_4_name
+  node_name = var.node_name
+  tags      = var.tags_vm4
+
+  clone {
+    vm_id = var.vm_id_template
+    full  = true
+  }
+
+  agent {
+    enabled = var.proxmox_agent
+    timeout = "2m"
+  }
+
+  cpu {
+    cores = var.vm_id_4_cpu
+  }
+
+  memory {
+    dedicated = var.vm_id_4_memory
+    floating  = var.vm_id_4_floating
+  }
+
+  disk {
+    datastore_id = var.vm_id_4_datastore_id
+    interface    = var.interface
+    size         = var.vm_id_4_disksize
+  }
+
+
+  initialization {
+    dns {
+      servers = var.vm_dns_list
+    }
+    ip_config {
+      ipv4 {
+        address = var.vm_id_4_address
+        gateway = var.vm_id_4_gateway
+      }
+    }
+
+    vendor_data_file_id = "local:snippets/install-qemu.yaml"
+
+    user_account {
+      username = var.vm_user_account
+      keys     = [trimspace(file(pathexpand(var.vm_user_key)))]
+    }
+  }
+}
+
+
+output "ru__ipv4_address" {
+  value = try(proxmox_virtual_environment_vm.ru_server.ipv4_addresses[1][0])
+}
+
+
+resource "proxmox_virtual_environment_vm" "ai_server" {
+
+  vm_id = var.vm_id_5
+
+  name      = var.vm_id_5_name
+  node_name = var.node_name
+  tags      = var.tags_vm5
+
+  machine = "q35"
+
+  clone {
+    vm_id = var.vm_id_template
+    full  = true
+  }
+
+  agent {
+    enabled = var.proxmox_agent
+    timeout = "2m"
+  }
+
+  cpu {
+    cores = var.vm_id_5_cpu
+  }
+
+  memory {
+    dedicated = var.vm_id_5_memory
+    floating  = var.vm_id_5_floating
+  }
+
+  disk {
+    datastore_id = var.vm_id_5_datastore_id
+    interface    = var.interface
+    size         = var.vm_id_5_disksize
+  }
+
+  hostpci {
+    device  = "hostpci0"
+    mapping = "gpu_p104"
+    pcie    = true
+    rombar  = true
+    xvga    = false
+  }
+
+
+  initialization {
+    dns {
+      servers = var.vm_dns_list
+    }
+    ip_config {
+      ipv4 {
+        address = var.vm_id_5_address
+        gateway = var.vm_id_5_gateway
+      }
+    }
+
+    vendor_data_file_id = "local:snippets/install-qemu.yaml"
+
+    user_account {
+      username = var.vm_user_account
+      keys     = [trimspace(file(pathexpand(var.vm_user_key)))]
+    }
+  }
+}
+
+
+output "ai__ipv4_address" {
+  value = try(proxmox_virtual_environment_vm.ai_server.ipv4_addresses[1][0])
+}

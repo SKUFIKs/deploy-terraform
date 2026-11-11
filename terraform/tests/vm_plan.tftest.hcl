@@ -77,6 +77,28 @@ variables {
   vm_id_3_disksize     = 10
   vm_id_3_address      = "192.168.10.103/24"
   vm_id_3_gateway      = "192.168.10.1"
+
+  vm_id_4              = 104
+  vm_id_4_name         = "test-ru"
+  tags_vm4             = ["test", "ru"]
+  vm_id_4_cpu          = 2
+  vm_id_4_memory       = 2048
+  vm_id_4_floating     = 512
+  vm_id_4_datastore_id = "local-lvm"
+  vm_id_4_disksize     = 10
+  vm_id_4_address      = "192.168.10.104/24"
+  vm_id_4_gateway      = "192.168.10.1"
+
+  vm_id_5              = 105
+  vm_id_5_name         = "test-ai"
+  tags_vm5             = ["test", "ai"]
+  vm_id_5_cpu          = 4
+  vm_id_5_memory       = 4096
+  vm_id_5_floating     = 1024
+  vm_id_5_datastore_id = "local-lvm"
+  vm_id_5_disksize     = 20
+  vm_id_5_address      = "192.168.10.105/24"
+  vm_id_5_gateway      = "192.168.10.1"
 }
 
 run "template_uses_defaults" {
