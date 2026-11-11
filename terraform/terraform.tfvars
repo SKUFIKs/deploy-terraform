@@ -44,3 +44,27 @@ vm_id_3_datastore_id = "local-lvm"
 vm_id_3_disksize     = 15
 vm_id_3_address      = "192.168.10.100/24"
 vm_id_3_gateway      = "192.168.10.1"
+
+#vm settings 4
+vm_id_4              = 201
+vm_id_4_name         = "ru-server"
+tags_vm4             = ["ru"]
+vm_id_4_cpu          = 2
+vm_id_4_memory       = 2048
+vm_id_4_floating     = 1024
+vm_id_4_datastore_id = "local-lvm"
+vm_id_4_disksize     = 15
+vm_id_4_address      = "192.168.10.102/24"
+vm_id_4_gateway      = "192.168.10.1"
+
+#vm settings 5
+vm_id_5              = 201
+vm_id_5_name         = "llama-server"
+tags_vm5             = ["ai", "llama"]
+vm_id_5_cpu          = 4
+vm_id_5_memory       = 4096
+vm_id_5_floating     = 1024
+vm_id_5_datastore_id = "local-lvm"
+vm_id_5_disksize     = 30
+vm_id_5_address      = "192.168.10.103/24"
+vm_id_5_gateway      = "192.168.10.1"

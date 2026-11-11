@@ -221,3 +221,83 @@ variable "vm_id_3_address" {
 variable "vm_id_3_gateway" {
   type = string
 }
+
+variable "vm_id_4" {
+  type = number
+}
+
+variable "tags_vm4" {
+  type = list(string)
+}
+
+variable "vm_id_4_name" {
+  type = string
+}
+
+variable "vm_id_4_cpu" {
+  type = number
+}
+
+variable "vm_id_4_memory" {
+  type = number
+}
+
+variable "vm_id_4_floating" {
+  type = number
+}
+
+variable "vm_id_4_datastore_id" {
+  type = string
+}
+
+variable "vm_id_4_disksize" {
+  type = number
+}
+
+variable "vm_id_4_address" {
+  type = string
+}
+
+variable "vm_id_4_gateway" {
+  type = string
+}
+
+variable "vm_id_5" {
+  type = number
+}
+
+variable "tags_vm5" {
+  type = list(string)
+}
+
+variable "vm_id_5_name" {
+  type = string
+}
+
+variable "vm_id_5_cpu" {
+  type = number
+}
+
+variable "vm_id_5_memory" {
+  type = number
+}
+
+variable "vm_id_5_floating" {
+  type = number
+}
+
+variable "vm_id_5_datastore_id" {
+  type = string
+}
+
+variable "vm_id_5_disksize" {
+  type = number
+}
+
+variable "vm_id_5_address" {
+  type = string
+}
+
+variable "vm_id_5_gateway" {
+  type = string
+}

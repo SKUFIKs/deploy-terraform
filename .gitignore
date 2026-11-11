@@ -11,6 +11,9 @@ terraform.tfstate.d/
 tfplan
 .tflint.d/
 
+# Локальные бинарники Terraform/TFLint (tools/install-tools.ps1)
+.tools/
+
 *.tfvars.json
 *.auto.tfvars.json
 

@@ -104,9 +104,21 @@ Actions они передаются через `TF_VAR_*` из GitHub Secrets:
 - `tflint --init` и `tflint`;
 - `terraform test`.
 
-Для локального запуска нужны `terraform` и `tflint` в `PATH`. `pre-commit`
-необязателен: без него проверки выполняются напрямую. Чтобы включить хуки
-перед коммитом:
+Если `terraform` и `tflint` не установлены, их можно положить локально:
+
+```powershell
+.\tools\install-tools.ps1
+.\lint.ps1
+```
+
+Скрипт скачивает бинарники в `.tools/` (каталог в git не попадает) и создаёт
+локальный `.terraformrc` с зеркалом провайдеров Yandex Cloud — это помогает,
+когда `registry.terraform.io` недоступен. Если у тебя уже есть свой прокси или
+зеркало, удали `.terraformrc` или задай `TF_CLI_CONFIG_FILE` вручную.
+`lint.ps1` сам находит `.tools`, менять `PATH` не нужно.
+
+`pre-commit` необязателен: без него проверки выполняются напрямую. Чтобы
+включить хуки перед коммитом:
 
 ```bash
 pre-commit install
