@@ -46,7 +46,7 @@ vm_id_3_address      = "192.168.10.100/24"
 vm_id_3_gateway      = "192.168.10.1"
 
 #vm settings 4
-vm_id_4              = 201
+vm_id_4              = 202
 vm_id_4_name         = "ru-server"
 tags_vm4             = ["ru"]
 vm_id_4_cpu          = 2
